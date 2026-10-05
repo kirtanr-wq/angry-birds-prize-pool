@@ -1,0 +1,756 @@
+/* ========================================
+   RESET
+======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    overflow: hidden;
+
+    font-family:
+        Impact,
+        Haettenschweiler,
+        "Arial Narrow Bold",
+        sans-serif;
+}
+
+
+/* ========================================
+   PRIZE PAGE
+======================================== */
+
+.prize-page {
+    position: relative;
+
+    width: 100%;
+    height: 100vh;
+
+    overflow: hidden;
+
+    background-image:
+        url("assets/prize-bg.png");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+/* ========================================
+   STARS CONTAINER
+======================================== */
+
+.stars {
+    position: absolute;
+
+    top: 1%;
+    left: 50%;
+
+    width: 950px;
+    height: 360px;
+
+    transform: translateX(-50%);
+
+    z-index: 2;
+
+    pointer-events: none;
+}
+
+
+/* ========================================
+   ALL STARS
+======================================== */
+
+.star {
+    position: absolute;
+
+    object-fit: contain;
+
+    opacity: 0;
+
+    will-change:
+        transform,
+        opacity;
+
+    filter:
+        drop-shadow(
+            0 12px 8px
+            rgba(124, 47, 0, 0.25)
+        );
+}
+
+
+/* ========================================
+   LEFT STAR
+======================================== */
+
+.star-left {
+    width: 365px;
+
+    left: 20px;
+    top: 75px;
+
+    z-index: 1;
+
+    transform:
+        translate(-120px, -80px)
+        rotate(-12deg)
+        scale(0.3);
+}
+
+
+/* ========================================
+   RIGHT STAR
+======================================== */
+
+.star-right {
+    width: 365px;
+
+    right: 20px;
+    top: 75px;
+
+    z-index: 1;
+
+    transform:
+        translate(120px, -80px)
+        rotate(12deg)
+        scale(0.3);
+}
+
+
+/* ========================================
+   CENTRE STAR
+======================================== */
+
+.star-centre {
+    width: 440px;
+
+    left: 50%;
+    top: 0;
+
+    z-index: 3;
+
+    transform:
+        translateX(-50%)
+        translateY(-150px)
+        scale(0.25);
+}
+
+
+/* ========================================
+   STAR ANIMATIONS
+======================================== */
+
+.prize-page.start .star-centre {
+    animation:
+        centreStarIn
+        0.65s
+        cubic-bezier(0.2, 1.5, 0.45, 1)
+        forwards;
+}
+
+
+.prize-page.start .star-left {
+    animation:
+        leftStarIn
+        0.55s
+        0.30s
+        cubic-bezier(0.2, 1.5, 0.45, 1)
+        forwards;
+}
+
+
+.prize-page.start .star-right {
+    animation:
+        rightStarIn
+        0.55s
+        0.42s
+        cubic-bezier(0.2, 1.5, 0.45, 1)
+        forwards;
+}
+
+
+/* ========================================
+   CENTRE STAR ANIMATION
+======================================== */
+
+@keyframes centreStarIn {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translateX(-50%)
+            translateY(-150px)
+            scale(0.25);
+    }
+
+    65% {
+        opacity: 1;
+
+        transform:
+            translateX(-50%)
+            translateY(10px)
+            scale(1.1);
+    }
+
+    82% {
+        transform:
+            translateX(-50%)
+            translateY(-4px)
+            scale(0.96);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            translateX(-50%)
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* ========================================
+   LEFT STAR ANIMATION
+======================================== */
+
+@keyframes leftStarIn {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translate(-120px, -80px)
+            rotate(-18deg)
+            scale(0.3);
+    }
+
+    70% {
+        opacity: 1;
+
+        transform:
+            translate(5px, 5px)
+            rotate(-5deg)
+            scale(1.08);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            translate(0, 0)
+            rotate(-5deg)
+            scale(1);
+    }
+}
+
+
+/* ========================================
+   RIGHT STAR ANIMATION
+======================================== */
+
+@keyframes rightStarIn {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translate(120px, -80px)
+            rotate(18deg)
+            scale(0.3);
+    }
+
+    70% {
+        opacity: 1;
+
+        transform:
+            translate(-5px, 5px)
+            rotate(5deg)
+            scale(1.08);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            translate(0, 0)
+            rotate(5deg)
+            scale(1);
+    }
+}
+
+
+/* ========================================
+   PRIZE BOARD
+======================================== */
+
+.board-wrapper {
+    position: absolute;
+
+    top: 27%;
+    left: 50%;
+
+    width: min(900px, 76vw);
+
+    transform:
+        translate(-50%, -120px)
+        scale(0.7);
+
+    opacity: 0;
+
+    z-index: 6;
+
+    will-change:
+        transform,
+        opacity;
+}
+
+
+.prize-board {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    object-fit: contain;
+
+    pointer-events: none;
+    user-select: none;
+}
+
+
+/* ========================================
+   BOARD CONTENT
+======================================== */
+
+.board-content {
+    position: absolute;
+
+    /*
+       Positions the text inside
+       the dark scoreboard panel.
+    */
+
+    top: 47%;
+    left: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    width: 65%;
+    height: 30%;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    z-index: 10;
+}
+
+
+/* ========================================
+   PRIZE POOL TITLE
+======================================== */
+
+.board-title {
+    display: block;
+
+    color: #ffd64a;
+
+    font-family:
+        Impact,
+        Haettenschweiler,
+        "Arial Narrow Bold",
+        sans-serif;
+
+    font-size:
+        clamp(25px, 2.3vw, 37px);
+
+    font-weight: 900;
+
+    line-height: 0.9;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    white-space: nowrap;
+
+    -webkit-text-stroke:
+        1px
+        #8b4100;
+
+    text-shadow:
+        0 2px 0 #c26700,
+        0 4px 0 #713200,
+        0 6px 5px rgba(0, 0, 0, 0.45);
+}
+
+
+/* ========================================
+   ₹7,000
+======================================== */
+
+.board-amount {
+    display: block;
+
+    margin-top: 8px;
+
+    color: #ffffff;
+
+    font-family:
+        Impact,
+        Haettenschweiler,
+        "Arial Narrow Bold",
+        sans-serif;
+
+    font-size:
+        clamp(60px, 6vw, 92px);
+
+    font-weight: 900;
+
+    line-height: 0.82;
+
+    letter-spacing: 1px;
+
+    white-space: nowrap;
+
+    -webkit-text-stroke:
+        1px
+        rgba(70, 30, 0, 0.65);
+
+    text-shadow:
+        0 3px 0 #9c4c00,
+        0 6px 0 #542300,
+        0 8px 6px rgba(0, 0, 0, 0.45);
+}
+
+
+/* ========================================
+   BOARD REVEAL
+======================================== */
+
+.prize-page.start .board-wrapper {
+    animation:
+        boardDrop
+        0.7s
+        0.72s
+        cubic-bezier(0.2, 1.35, 0.4, 1)
+        forwards;
+}
+
+
+@keyframes boardDrop {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translate(-50%, -120px)
+            scale(0.7);
+    }
+
+    70% {
+        opacity: 1;
+
+        transform:
+            translate(-50%, 8px)
+            scale(1.04);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            translate(-50%, 0)
+            scale(1);
+    }
+}
+
+
+/* ========================================
+   CHARACTERS
+======================================== */
+
+.characters-wrapper {
+    position: absolute;
+
+    left: 50%;
+
+    /*
+       Raised from the previous -55px.
+       This prevents the characters and
+       grass from being cut off.
+    */
+
+    bottom: 10px;
+
+    width: min(930px, 78vw);
+
+    transform:
+        translate(-50%, 190px);
+
+    opacity: 0;
+
+    z-index: 10;
+
+    will-change:
+        transform,
+        opacity;
+}
+
+
+.prize-characters {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    object-fit: contain;
+
+    pointer-events: none;
+    user-select: none;
+}
+
+
+/* ========================================
+   CHARACTERS RISE
+======================================== */
+
+.prize-page.start .characters-wrapper {
+    animation:
+        charactersRise
+        0.8s
+        1.30s
+        cubic-bezier(0.2, 1.15, 0.4, 1)
+        forwards;
+}
+
+
+@keyframes charactersRise {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translate(-50%, 190px);
+    }
+
+    75% {
+        opacity: 1;
+
+        transform:
+            translate(-50%, -12px);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            translate(-50%, 0);
+    }
+}
+
+
+/* ========================================
+   CHARACTER IDLE FLOAT
+======================================== */
+
+.prize-page.start .prize-characters {
+    animation:
+        characterFloat
+        3.5s
+        2.1s
+        ease-in-out
+        infinite;
+}
+
+
+@keyframes characterFloat {
+
+    0%,
+    100% {
+        transform:
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            translateY(-5px);
+    }
+}
+
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 900px) {
+
+    .stars {
+        width: 760px;
+
+        top: 3%;
+
+        transform:
+            translateX(-50%)
+            scale(0.82);
+
+        transform-origin:
+            center top;
+    }
+
+
+    .board-wrapper {
+        width: min(760px, 88vw);
+
+        top: 28%;
+    }
+
+
+    .board-content {
+        top: 47%;
+    }
+
+
+    .board-title {
+        font-size: 25px;
+    }
+
+
+    .board-amount {
+        font-size: 68px;
+    }
+
+
+    .characters-wrapper {
+        width: min(850px, 95vw);
+
+        bottom: 25px;
+    }
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+
+    .prize-page {
+        min-height: 100vh;
+
+        background-position: center;
+    }
+
+
+    /* STARS */
+
+    .stars {
+        width: 650px;
+
+        top: 5%;
+
+        transform:
+            translateX(-50%)
+            scale(0.58);
+
+        transform-origin:
+            center top;
+    }
+
+
+    /* BOARD */
+
+    .board-wrapper {
+        width: 105vw;
+
+        top: 29%;
+    }
+
+
+    .board-content {
+        top: 47%;
+
+        width: 62%;
+    }
+
+
+    .board-title {
+        font-size: 19px;
+
+        letter-spacing: 1.5px;
+
+        -webkit-text-stroke:
+            0.7px
+            #8b4100;
+    }
+
+
+    .board-amount {
+        margin-top: 5px;
+
+        font-size: 54px;
+    }
+
+
+    /* CHARACTERS */
+
+    .characters-wrapper {
+        width: 115vw;
+
+        bottom: 4%;
+    }
+}
+
+
+/* ========================================
+   VERY SMALL MOBILE
+======================================== */
+
+@media (max-width: 400px) {
+
+    .stars {
+        transform:
+            translateX(-50%)
+            scale(0.52);
+    }
+
+
+    .board-wrapper {
+        width: 112vw;
+    }
+
+
+    .board-title {
+        font-size: 17px;
+    }
+
+
+    .board-amount {
+        font-size: 48px;
+    }
+
+
+    .characters-wrapper {
+        width: 125vw;
+
+        bottom: 5%;
+    }
+}
